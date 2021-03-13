@@ -12,6 +12,8 @@
 </body>
 
 <script>
+var width = 900;
+var height = 500;
 var data = [
     99, 102, 109, 155, 172,
     186, 176, 222, 228, 222,
@@ -20,12 +22,12 @@ var data = [
     270, 270, 209, 248, 251,
     261, 263, 273, 260, 296,
     325
-]
+];
 
 let svg = d3.select("div#area2")
             .append("svg")
-            .attr("width", 900)
-            .attr("height", 500);
+            .attr("width", width)
+            .attr("height", height);
 
 let xScale = d3.scaleLinear()
     .domain([0, data.length])
@@ -44,5 +46,13 @@ svg.selectAll('rect')
     .attr('height', d => 600 - yScale(d))
     .attr('width', 15)
     .style('fill', 'red');
+
+svg.append('text')
+   .attr('x', (width / 2))
+   .attr('y', height / 10)
+   .attr('text-anchor', 'middle')
+   .style('font-size', '20px')
+   .style('text-decoration', 'underline')
+   .text('中華職棒歷年登錄球員數');
 </script>
 </html>
