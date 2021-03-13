@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Information Visualization</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+
+<body>
+    <div id="area1"></div>
+    <div id="area2"></div>
+</body>
+
+<script>
+var data = [
+    99, 102, 109, 155, 172,
+    186, 176, 222, 228, 222,
+    116, 109, 116, 203, 219,
+    269, 355, 382, 338, 307,
+    270, 270, 209, 248, 251,
+    261, 263, 273, 260, 296,
+    325
+]
+
+let svg = d3.select("div#area2")
+            .append("svg")
+            .attr("width", 900)
+            .attr("height", 500);
+
+let xScale = d3.scaleLinear()
+    .domain([0, data.length])
+    .range([0, 700]);
+
+let yScale = d3.scaleLinear()
+    .domain([0, 400])
+    .range([300, 0]);
+
+svg.selectAll('rect')
+    .data(data)
+    .enter()
+    .append('rect')
+    .attr('x', (d, i) => xScale(i) + 100)
+    .attr('y', d => yScale(d) + 100)
+    .attr('height', d => 600 - yScale(d))
+    .attr('width', 15)
+    .style('fill', 'red');
+</script>
+</html>
