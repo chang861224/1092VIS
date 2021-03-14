@@ -7,14 +7,14 @@
 </head>
 
 <body>
-    <div id="area1"></div>
-    <div id="area2"></div>
+    <div id="graph"></div>
 </body>
 
 <script>
-var width = 900;
-var height = 500;
-var data = [
+var margin = {top: 50, bottom: 50, left: 50, right: 100};
+var width = 960 - margin.left - margin.right;
+var height = 500 - margin.top - margin.bottom;
+var data = [0,
     99, 102, 109, 155, 172,
     186, 176, 222, 228, 222,
     116, 109, 116, 203, 219,
@@ -24,35 +24,55 @@ var data = [
     325
 ];
 
-let svg = d3.select("div#area2")
+let svg = d3.select("div#graph")
             .append("svg")
-            .attr("width", width)
-            .attr("height", height);
+            .attr("width", width * 1.1)
+            .attr("height", height * 1.3);
 
 let xScale = d3.scaleLinear()
     .domain([0, data.length])
-    .range([0, 700]);
+    .range([0, width]);
 
 let yScale = d3.scaleLinear()
     .domain([0, 400])
-    .range([300, 0]);
+    .range([height, 0]);
 
 svg.selectAll('rect')
     .data(data)
     .enter()
     .append('rect')
-    .attr('x', (d, i) => xScale(i) + 100)
-    .attr('y', d => yScale(d) + 100)
-    .attr('height', d => 600 - yScale(d))
+    .attr('x', (d, i) => xScale(i) + width * 0.05)
+    .attr('y', d => yScale(d) + height * 0.2)
+    .attr('height', d => 400 - yScale(d))
     .attr('width', 15)
     .style('fill', 'red');
 
 svg.append('text')
-   .attr('x', (width / 2))
-   .attr('y', height / 10)
+   .attr('x', width * 0.5)
+   .attr('y', height * 0.1)
    .attr('text-anchor', 'middle')
    .style('font-size', '20px')
    .style('text-decoration', 'underline')
    .text('中華職棒歷年登錄球員數');
+
+svg.append('g')
+   .attr('transform', 'translate(' + (15 * 0.5 + width * 0.05) + ',' + height * 1.2 + ')')
+   .call(d3.axisBottom(xScale));
+
+svg.append('text')
+   .attr('transform', 'translate(' + width * 1.05 + ',' + height * 1.28 + ')')
+   .style('text-anchor', 'middle')
+   .text('年度');
+
+svg.append('g')
+   .attr('transform', 'translate(' + (15 * 0.5 + width * 0.05) + ',' + height * 0.2 + ')')
+   .call(d3.axisLeft(yScale));
+
+svg.append('text')
+   .attr('y', margin.left)
+   .attr('x', '2em')
+   .attr('dy', '1em')
+   .style('text-anchor', 'middle')
+   .text('球員數');
 </script>
 </html>
