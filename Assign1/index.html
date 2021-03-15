@@ -3,11 +3,28 @@
 <html>
 <head>
     <title>Information Visualization</title>
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src='https://d3js.org/d3.v6.min.js'></script>
 </head>
 
 <body>
-    <div id="graph"></div>
+    <div id='banner'></div>
+    <main id='main'>
+        <div id="graph"></div>
+        <div id='graph-info'>
+            <div id='student-info'>
+                <p class='sub-title'>基本資料：<p>
+                <p class='content'>張麒竑 資科碩一 109753119</p>
+            </div>
+            <div id='motivation'>
+                <p class='sub-title'>動機：<p>
+                <p class='content'>這是動機</p>
+            </div>
+            <div id='description'>
+                <p class='sub-title'>說明：<p>
+                <p class='content'>這是圖片說明</p>
+            </div>
+        </div>
+    </main>
 </body>
 
 <script>
@@ -53,7 +70,7 @@ svg.append('text')
    .attr('text-anchor', 'middle')
    .style('font-size', '20px')
    .style('text-decoration', 'underline')
-   .text('中華職棒歷年登錄球員數');
+   .text('中華職棒歷年登錄球員人數');
 
 svg.append('g')
    .attr('transform', 'translate(' + (15 * 0.5 + width * 0.05) + ',' + height * 1.2 + ')')
