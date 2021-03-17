@@ -2,25 +2,33 @@
 
 <html>
 <head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=Edge'>
     <title>Information Visualization</title>
+    <meta name='viewport' content='width=device-width,initial-scale=1.0'>
+    <link href='./css/base.css' rel='stylesheet' type='text/css' media='all'>
     <script src='https://d3js.org/d3.v6.min.js'></script>
 </head>
 
 <body>
-    <div id='banner'></div>
-    <main id='main'>
+    <header id='header'>
+        <div class='inner'>
+            <h1 id='title'>Chinese Professional Baseball League</h1>
+        </div>
+    </header>
+    <main id='main' class='inner'>
         <div id="graph"></div>
         <div id='graph-info'>
             <div id='student-info'>
-                <p class='sub-title'>基本資料：<p>
-                <p class='content'>張麒竑 資科碩一 109753119</p>
+                <p class='sub-title'>基本資料<p>
+                <p class='content'>姓名：張麒竑<br>系級：資科碩一<br>學號：109753119</p>
             </div>
             <div id='motivation'>
-                <p class='sub-title'>動機：<p>
+                <p class='sub-title'>動機<p>
                 <p class='content'>這是動機</p>
             </div>
             <div id='description'>
-                <p class='sub-title'>說明：<p>
+                <p class='sub-title'>說明<p>
                 <p class='content'>這是圖片說明</p>
             </div>
         </div>
