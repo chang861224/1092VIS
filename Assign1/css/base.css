@@ -180,6 +180,8 @@ BASE LAYOUT
     font-weight: bold;
 }
 #graph-info p.content{
+    padding-top: 5px;
+    padding-bottom: 5px;
     padding-left: 5%;
     font-size: 22px;
 }
