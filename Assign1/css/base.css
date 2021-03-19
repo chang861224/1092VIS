@@ -140,8 +140,9 @@ BASE LAYOUT
     width: 100%;
     height: auto;
     padding-top: 25%;
-    font-size: 40px;
-    color: #b8e8e0;
+    font-size: 50px;
+    color: #90b0da;
+    -webkit-text-stroke: 2px #3355ff;
 }
 
 
