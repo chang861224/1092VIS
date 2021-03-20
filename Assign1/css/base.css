@@ -145,6 +145,14 @@ BASE LAYOUT
     -webkit-text-stroke: 2px #3355ff;
 }
 
+#subtitle{
+    width: 100%;
+    padding-top: 5px;
+    font-size: 20px;
+    text-align: right;
+    color: black;
+}
+
 
 /* BASIC DESIGN */
 .inner{
@@ -189,18 +197,12 @@ BASE LAYOUT
 
 /* FOOTER */
 #footer{
-	height: 20vh;
-	background-color: #004b97;
+	background-color: #49a3ff;
 	color: white;
-	font-size: 12px;
+	font-size: 16px;
 }
 #footer p a{
 	color: white;
-}
-@media screen and (min-width: 640px){
-	#footer{
-		font-size: 16px;
-	}
 }
 
 
