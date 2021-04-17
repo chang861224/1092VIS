@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=Edge'>
+    <title>CPBL Homeruns Statistic</title>
+    <meta name='viewport' content='width=device-width,initial-scale=1.0'>
+    <link href='./css/base.css' rel='stylesheet' type='text/css' media='all'>
+    <script src='https://d3js.org/d3.v6.min.js'></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+    <header id='header'>
+        <div class='inner'>
+            <h1 id='title'>Chinese Professional Baseball League</h1>
+            <div id='subtitle'><strong>資科碩一 張麒竑 109753119</strong></div>
+        </div>
+    </header>
+    <main id='main' class='inner'>
+        <div id="graph"></div>
+        <p class='content' style='text-align: right;'>數據統計至2021年4月17日</p>
+        <div id='graph-info'>
+            <div id="detail-information" style='display: none;'>
+            </div>
+            <div id='motivation'>
+                <p class='sub-title'>動機</p>
+                <p class='content'>
+                中華職棒（CPBL）自1990年開打以來，至今以邁入第32年，孕育出不少棒球好手。
+                </p>
+                <p class='content'>
+                而隨著現代棒球越來越注重長打的產生，選手們也對於打擊的訓練格外要求，不只要求要擊中球，更要求要把球打遠，重量訓練也做的比20年前來的多且注重，再加上球團也更願意投資，使得現在的職棒選手比草創時期更有全壘打能力。
+                </p>
+                <p class='content'>
+                除了選手的進步之外，中華職棒被討論最多的「彈力球」也是影響全壘打產量的另一個因素。若當年的比賽用球彈性恢復係數較高，則當年度全壘打支數會偏高；反之，若彈性恢復係數較低，則全壘打產量就會有明顯的下滑。
+                </p>
+                <p class='content'>
+                也因此，我想做關於中華職棒32年來，歷年聯盟全壘打總產量圖表，藉以看出哪一年的選手教會打全壘打，或者是哪一年的比賽用球彈性恢復係數較高。
+                </p>
+            </div>
+            <div id='description'>
+                <p class='sub-title'>說明</p>
+                <p class='content'>
+                </p>
+                <p class='content'>
+                </p>
+                <p class='content'>
+                </p>
+                <p class='content'>
+                </p>
+            </div>
+            <div id='resource'>
+                <p class='sub-title'>資料來源</p>
+                <p class='content'>
+                <a href='http://www.cpbl.com.tw/' target='_blank'>中華職棒大聯盟（Chinese Professional Baseball League，CPBL）</a>
+                </p>
+            </div>
+        </div>
+    </main>
+    <footer id='footer' class='section'>
+        <div class='inner'>
+            <ul class='sns'>
+                <li><a href='https://www.facebook.com/chang861224/' class='icon-facebook2' title='Facebook'></a></li>
+                <li><a href='mailto:chihung861224@gmail.com' class='icon-envelop' title='Email'></a></li>
+            </ul>
+            <p class="copyright">
+            <small>Copyright &copy; cch All Right Reserved.</small>
+            </p>
+        </div>
+    </footer>
+</body>
+
+<script>
+var margin = {top: 50, bottom: 50, left: 50, right: 100};
+var width = 960 - margin.left - margin.right;
+var height = 500 - margin.top - margin.bottom;
+var data = [
+    {'YEAR': 1, 'HR': 182, 'TEAM': 4, 'AVG': 45.5, 'GAME': 90, 'AVG_GAME': 0.51}, 
+    {'YEAR': 2, 'HR': 202, 'TEAM': 4, 'AVG': 50.5, 'GAME': 90, 'AVG_GAME': 0.56}, 
+    {'YEAR': 3, 'HR': 314, 'TEAM': 4, 'AVG': 78.5, 'GAME': 90, 'AVG_GAME': 0.87}, 
+    {'YEAR': 4, 'HR': 319, 'TEAM': 6, 'AVG': 53.2, 'GAME': 90, 'AVG_GAME': 0.59}, 
+    {'YEAR': 5, 'HR': 380, 'TEAM': 6, 'AVG': 63.3, 'GAME': 90, 'AVG_GAME': 0.7}, 
+    {'YEAR': 6, 'HR': 387, 'TEAM': 6, 'AVG': 64.5, 'GAME': 100, 'AVG_GAME': 0.65}, 
+    {'YEAR': 7, 'HR': 475, 'TEAM': 6, 'AVG': 79.2, 'GAME': 100, 'AVG_GAME': 0.79}, 
+    {'YEAR': 8, 'HR': 480, 'TEAM': 7, 'AVG': 68.6, 'GAME': 96, 'AVG_GAME': 0.71}, 
+    {'YEAR': 9, 'HR': 381, 'TEAM': 6, 'AVG': 63.5, 'GAME': 105, 'AVG_GAME': 0.6}, 
+    {'YEAR': 10, 'HR': 257, 'TEAM': 6, 'AVG': 42.8, 'GAME': 100, 'AVG_GAME': 0.43}, 
+    {'YEAR': 11, 'HR': 175, 'TEAM': 4, 'AVG': 43.8, 'GAME': 90, 'AVG_GAME': 0.49}, 
+    {'YEAR': 12, 'HR': 190, 'TEAM': 4, 'AVG': 47.5, 'GAME': 90, 'AVG_GAME': 0.53}, 
+    {'YEAR': 13, 'HR': 254, 'TEAM': 4, 'AVG': 63.5, 'GAME': 90, 'AVG_GAME': 0.71}, 
+    {'YEAR': 14, 'HR': 298, 'TEAM': 6, 'AVG': 49.7, 'GAME': 100, 'AVG_GAME': 0.5}, 
+    {'YEAR': 15, 'HR': 339, 'TEAM': 6, 'AVG': 56.5, 'GAME': 100, 'AVG_GAME': 0.57}, 
+    {'YEAR': 16, 'HR': 318, 'TEAM': 6, 'AVG': 53.0, 'GAME': 100, 'AVG_GAME': 0.53}, 
+    {'YEAR': 17, 'HR': 300, 'TEAM': 6, 'AVG': 50.0, 'GAME': 100, 'AVG_GAME': 0.5}, 
+    {'YEAR': 18, 'HR': 430, 'TEAM': 6, 'AVG': 71.7, 'GAME': 100, 'AVG_GAME': 0.72}, 
+    {'YEAR': 19, 'HR': 318, 'TEAM': 6, 'AVG': 53.0, 'GAME': 100, 'AVG_GAME': 0.53}, 
+    {'YEAR': 20, 'HR': 323, 'TEAM': 4, 'AVG': 80.8, 'GAME': 120, 'AVG_GAME': 0.67}, 
+    {'YEAR': 21, 'HR': 159, 'TEAM': 4, 'AVG': 39.8, 'GAME': 120, 'AVG_GAME': 0.33}, 
+    {'YEAR': 22, 'HR': 238, 'TEAM': 4, 'AVG': 59.5, 'GAME': 120, 'AVG_GAME': 0.5}, 
+    {'YEAR': 23, 'HR': 265, 'TEAM': 4, 'AVG': 66.3, 'GAME': 120, 'AVG_GAME': 0.55}, 
+    {'YEAR': 24, 'HR': 193, 'TEAM': 4, 'AVG': 48.3, 'GAME': 120, 'AVG_GAME': 0.4}, 
+    {'YEAR': 25, 'HR': 209, 'TEAM': 4, 'AVG': 52.3, 'GAME': 120, 'AVG_GAME': 0.44}, 
+    {'YEAR': 26, 'HR': 429, 'TEAM': 4, 'AVG': 107.3, 'GAME': 120, 'AVG_GAME': 0.89}, 
+    {'YEAR': 27, 'HR': 603, 'TEAM': 4, 'AVG': 150.8, 'GAME': 120, 'AVG_GAME': 1.26}, 
+    {'YEAR': 28, 'HR': 494, 'TEAM': 4, 'AVG': 123.5, 'GAME': 120, 'AVG_GAME': 1.03}, 
+    {'YEAR': 29, 'HR': 399, 'TEAM': 4, 'AVG': 99.8, 'GAME': 120, 'AVG_GAME': 0.83}, 
+    {'YEAR': 30, 'HR': 514, 'TEAM': 4, 'AVG': 128.5, 'GAME': 120, 'AVG_GAME': 1.07}, 
+    {'YEAR': 31, 'HR': 561, 'TEAM': 4, 'AVG': 140.3, 'GAME': 120, 'AVG_GAME': 1.17}, 
+    {'YEAR': 32, 'HR': 61, 'TEAM': 5, 'AVG': 12.2, 'GAME': 22, 'AVG_GAME': 0.55}
+]
+
+console.log(data);
+
+let svg = d3.select("div#graph")
+            .append("svg")
+            .attr("width", width * 2)
+            .attr("height", height * 1.3);
+
+let xScale = d3.scaleLinear()
+    .domain([0, data.length])
+    .range([0, width]);
+
+let yScale = d3.scaleLinear()
+    .domain([0, 650])
+    .range([height, 0]);
+
+svg.selectAll('rect')
+    .data(data)
+    .enter()
+    .append('rect')
+    .attr('x', (data, idx) => xScale(idx) + width * 0.08)
+    .attr('y', data => yScale(data.HR) + height * 0.2)
+    .attr('height', data => 400 - yScale(data.HR))
+    .attr('width', 15)
+    .style('fill', 'red')
+    .on('mouseover', function(){
+        d3.select(this)
+          .transition()
+          .duration(300)
+          .style('fill', 'blue');
+    })
+    .on('mouseout', function(){
+        d3.select(this).transition()
+          .duration(300)
+          .style('fill', 'red');
+    })
+    .on('click', function(idx, val){
+        //$('#detail-information').slideUp(100);
+        $('#detail-information').empty();
+        $('#detail-information').append("<p class='sub-title'>年度詳細資訊</p>");
+        $('#detail-information').append("<p class='content'>年度：" + val.YEAR + "</p>");
+        $('#detail-information').append("<p class='content'>球隊數：" + val.TEAM + "</p>");
+        $('#detail-information').append("<p class='content'>全壘打總支數：" + val.HR + "</p>");
+        $('#detail-information').append("<p class='content'>平均每支球隊全壘打支數：" + val.AVG + "</p>");
+        $('#detail-information').append("<p class='content'>平均每支球隊比賽場數：：" + val.GAME + "</p>");
+        $('#detail-information').append("<p class='content'>平均每支球隊場均全壘打支數：" + val.AVG_GAME + "</p>");
+        $('#detail-information').append("<p class='content' style='font-size: 14px; text-align: right; text-decoration: underline;'><a onclick='closeDiv()' href='javascript:void(0);'>關閉詳細資訊欄位</a></p>");
+        $('#detail-information').slideDown(500);
+    });
+
+svg.append('text')
+   .attr('x', width * 0.5)
+   .attr('y', height * 0.1)
+   .attr('text-anchor', 'middle')
+   .style('font-size', '26px')
+   .style('text-decoration', 'underline')
+   .text('中華職棒歷年全壘打支數');
+
+svg.append('g')
+   .attr('transform', 'translate(' + (15 * 0.5 + width * 0.05) + ',' + height * 1.2 + ')')
+   .call(d3.axisBottom(xScale));
+
+svg.append('text')
+   .attr('transform', 'translate(' + width * 1.05 + ',' + height * 1.28 + ')')
+   .style('text-anchor', 'middle')
+   .text('年度');
+
+svg.append('g')
+   .attr('transform', 'translate(' + (15 * 0.5 + width * 0.05) + ',' + height * 0.2 + ')')
+   .call(d3.axisLeft(yScale));
+
+svg.append('text')
+   .attr('y', margin.left)
+   .attr('x', '2em')
+   .attr('dy', '1em')
+   .style('text-anchor', 'middle')
+   .text('全壘打數');
+
+function closeDiv(){
+    $('#detail-information').slideUp(500);
+}
+</script>
+</html>

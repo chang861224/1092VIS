@@ -1,0 +1,224 @@
+@charset 'UTF-8';
+
+/*
+==================================================
+RESET CSS
+==================================================
+ */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, main, menu, nav, section, summary,
+time, mark, audio, video{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, main, menu, nav, section{
+	display: block;
+}
+
+html{
+	-webkit-text-size-adjust: 100%;
+}
+
+body{
+	color: #59220d;
+    background-color: #e9f7ff;
+	line-height: 1.5;
+	font-size: 16px;
+	font-family: sans-serif, "Microsoft JhengHei";
+}
+
+img{
+	border: 0;
+	max-width: 100%;
+	height: auto;
+}
+
+ul{
+	list-style-type: none;
+}
+
+table{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+img, input, select, textarea{
+	vertical-align: middle;
+}
+
+a{
+	color: #59220d;
+	text-decoration: none;
+	transition: 0.5s;
+}
+
+a:hover{
+	color: #d53e04;
+}
+
+a:hover img{
+	opacity: 0.7;
+}
+
+
+/* ICON FONTS */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?o3r1an');
+  src:  url('fonts/icomoon.eot?o3r1an#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?o3r1an') format('truetype'),
+    url('fonts/icomoon.woff?o3r1an') format('woff'),
+    url('fonts/icomoon.svg?o3r1an#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-envelop:before {
+  content: "\e945";
+  color: white;
+}
+.icon-facebook2:before {
+  content: "\ea91";
+  color: white;
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-github:before {
+  content: "\eab0";
+}
+
+
+/*
+==================================================
+BASE LAYOUT
+==================================================
+ */
+
+/* HEADER */
+#header{
+	height: 350px;
+	background: url(../img/CPBL.JPG) center top no-repeat;
+	background-size: cover;
+	background-position-y: 60%;
+	background-color: #004b97;
+	background-size: cover;
+	text-align: center;
+	position: relative;
+	display: block;
+}
+
+#title{
+    width: 100%;
+    height: auto;
+    padding-top: 25%;
+    font-size: 50px;
+    color: #90b0da;
+    -webkit-text-stroke: 2px #3355ff;
+}
+
+#subtitle{
+    width: 100%;
+    padding-top: 5px;
+    font-size: 20px;
+    text-align: right;
+    color: black;
+}
+
+
+/* BASIC DESIGN */
+.inner{
+	max-width: 960px;
+    height: 100%;
+    margin: auto;
+}
+.inner:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#main div#graph{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+#main div:not(#graph){
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#graph{
+    text-align: center;
+}
+
+#graph-info{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+#graph-info p.sub-title{
+    font-size: 26px;
+    font-weight: bold;
+}
+#graph-info p.content{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5%;
+    font-size: 22px;
+}
+
+
+/* FOOTER */
+#footer{
+	background-color: #49a3ff;
+	color: white;
+	font-size: 16px;
+}
+#footer p a{
+	color: white;
+}
+
+
+/* COPYRIGHT */
+.copyright{
+	text-align: center;
+}
+
+/* SNS */
+.sns{
+	font-size: 22px;
+	text-align: center;
+}
+.sns li{
+	display: inline-block;
+	padding: 5px;
+}
+
+
