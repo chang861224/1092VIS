@@ -11,7 +11,8 @@ abbr, address, cite, code,
 del, dfn, em, img, ins, kbd, q, samp,
 small, strong, sub, sup, var,
 b, i,
-dl, dt, dd, ol, ul, li,
+dl, dt, dd,
+/*dl, dt, dd, ol, ul, li,*/
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure,
@@ -47,7 +48,8 @@ img{
 }
 
 ul{
-	list-style-type: none;
+    padding-left: 10%;
+    font-size: 22px;
 }
 
 table{
