@@ -9,6 +9,9 @@ National Chengchi University
 ### Assignment 1
 Static visualization using D3.js.
 
+### Assignment 2
+Dynamic visualization using D3.js.
+
 
 
 ## Instructor
