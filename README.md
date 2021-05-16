@@ -12,6 +12,9 @@ Static visualization using D3.js.
 ### Assignment 2
 Dynamic visualization using D3.js.
 
+### Assignment 3
+Information visualization of president elections in Taiwan from 2000 to 2020.
+
 
 
 ## Instructor
